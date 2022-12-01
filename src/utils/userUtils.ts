@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-const User = require("../../models/User");
+const User = require("../../models/user.ts");
 
 /**
  * encrypts user password
