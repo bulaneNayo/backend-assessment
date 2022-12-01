@@ -2,11 +2,11 @@
   "name": "backend-assessment",
   "version": "1.0.0",
   "description": "Minority Africa Advance Dev Assessment ",
-  "main": "build/src/app.js",
+  "main": "build/src/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./build && tsc",
-    "start": "node build/src/app.js",
+    "start": "nodemon src/app.ts",
     "lint": "eslint . --ext .ts"
   },
   "repository": {
@@ -28,7 +28,11 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "express": "^4.18.1",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "mongoose": "^6.7.5",
+    "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
     "ts-node": "^10.8.2"
   }
