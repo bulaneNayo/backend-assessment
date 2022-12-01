@@ -2,3 +2,6 @@
   from = "/*"
   to = "/build/src/app.ts"
   status = 200  
+
+  [build]
+  functions = "functions"

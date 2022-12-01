@@ -5,6 +5,7 @@ import userRoutes from "./routes/user";
 import storyRoutes from "./routes/story";
 const bodyParser = require("body-parser");
 const mongoSanitize = require("express-mongo-sanitize");
+const serverless = require("serverless-http")
 
 const app = express();
 
@@ -91,4 +92,4 @@ app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
 });
 
-module.exports = app;
+module.exports.handler = serverless(app)
