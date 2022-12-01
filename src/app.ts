@@ -5,9 +5,10 @@ import userRoutes from "./routes/user";
 import storyRoutes from "./routes/story";
 const bodyParser = require("body-parser");
 const mongoSanitize = require("express-mongo-sanitize");
-const serverless = require("serverless-http")
+const serverless = require("serverless-http");
 
 const app = express();
+const router = express.Router()
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -74,22 +75,23 @@ const database = (module.exports = () => {
 database();
 
 //user routes
-app.use(`${BASE_URL}/user`, userRoutes);
-app.use(`${BASE_URL}/user/login`, userRoutes);
+router.use(`${BASE_URL}/user`, userRoutes);
+router.use(`${BASE_URL}/user/login`, userRoutes);
 
 //stories endpoints
-app.use(`${BASE_URL}/story`, storyRoutes);
-app.use(`${BASE_URL}/story/publish`, storyRoutes);
-app.use(`${BASE_URL}/story/unpublish`, storyRoutes);
-app.use(`${BASE_URL}/story/republish`, storyRoutes);
-app.use(`${BASE_URL}/story/update`, storyRoutes);
-app.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
-app.use(`${BASE_URL}/story/popular`, storyRoutes);
-app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
-app.use(`${BASE_URL}/story/single`, storyRoutes);
+router.use(`${BASE_URL}/story`, storyRoutes);
+router.use(`${BASE_URL}/story/publish`, storyRoutes);
+router.use(`${BASE_URL}/story/unpublish`, storyRoutes);
+router.use(`${BASE_URL}/story/republish`, storyRoutes);
+router.use(`${BASE_URL}/story/update`, storyRoutes);
+router.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
+router.use(`${BASE_URL}/story/popular`, storyRoutes);
+router.use(`${BASE_URL}/story/single/popular`, storyRoutes);
+router.use(`${BASE_URL}/story/single`, storyRoutes);
 
+app.use("/.netlify/src/app",router);
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
 });
 
-module.exports.handler = serverless(app)
+module.exports.handler = serverless(app);
