@@ -71,30 +71,28 @@ const database = (module.exports = () => {
 });
 database();
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "API Working" });
 });
 
 //user routes
-router.use(`${BASE_URL}/user`, userRoutes);
-router.use(`${BASE_URL}/user/login`, userRoutes);
+app.use(`${BASE_URL}/user`, userRoutes);
+app.use(`${BASE_URL}/user/login`, userRoutes);
 
 //stories endpoints
-router.use(`${BASE_URL}/story`, storyRoutes);
-router.use(`${BASE_URL}/story/publish`, storyRoutes);
-router.use(`${BASE_URL}/story/unpublish`, storyRoutes);
-router.use(`${BASE_URL}/story/republish`, storyRoutes);
-router.use(`${BASE_URL}/story/update`, storyRoutes);
-router.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
-router.use(`${BASE_URL}/story/popular`, storyRoutes);
-router.use(`${BASE_URL}/story/single/popular`, storyRoutes);
-router.use(`${BASE_URL}/story/single`, storyRoutes);
+app.use(`${BASE_URL}/story`, storyRoutes);
+app.use(`${BASE_URL}/story/publish`, storyRoutes);
+app.use(`${BASE_URL}/story/unpublish`, storyRoutes);
+app.use(`${BASE_URL}/story/republish`, storyRoutes);
+app.use(`${BASE_URL}/story/update`, storyRoutes);
+app.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
+app.use(`${BASE_URL}/story/popular`, storyRoutes);
+app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
+app.use(`${BASE_URL}/story/single`, storyRoutes);
 
-app.use("/", router);
 
-app.listen(listenPort, () => {
-  console.log(`Server running at http://localhost:${listenPort}`);
-});
+// app.listen(listenPort, () => {
+//   console.log(`Server running at http://localhost:${listenPort}`);
+// });
 
-module.exports = app;
 module.exports.handler = serverless(app);
