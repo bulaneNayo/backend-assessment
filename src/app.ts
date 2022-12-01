@@ -25,7 +25,7 @@ const swaggerOptions = {
     },
   },
 
-  apis: ["/functions/docs/endpoints.ts"],
+  apis: ["src/docs/endpoints.ts"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -91,8 +91,8 @@ app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single`, storyRoutes);
 
 
-// app.listen(listenPort, () => {
-//   console.log(`Server running at http://localhost:${listenPort}`);
-// });
+//  app.listen(listenPort, () => {
+//    console.log(`Server running at http://localhost:${listenPort}`);
+//  });
 
 module.exports.handler = serverless(app);
