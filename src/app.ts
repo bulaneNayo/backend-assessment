@@ -8,7 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const serverless = require("serverless-http");
 
 const app = express();
-const router = express.Router()
+const router = express.Router();
 
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -45,9 +45,6 @@ const listenPort = 5000;
 //Middleware
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working" });
-});
 const database = (module.exports = () => {
   const connectionParams = {
     useNewUrlParser: true,
@@ -74,6 +71,10 @@ const database = (module.exports = () => {
 });
 database();
 
+router.get("/", (req, res) => {
+  res.json({ message: "API Working" });
+});
+
 //user routes
 router.use(`${BASE_URL}/user`, userRoutes);
 router.use(`${BASE_URL}/user/login`, userRoutes);
@@ -89,7 +90,7 @@ router.use(`${BASE_URL}/story/popular`, storyRoutes);
 router.use(`${BASE_URL}/story/single/popular`, storyRoutes);
 router.use(`${BASE_URL}/story/single`, storyRoutes);
 
-app.use("/",router);
+app.use("/", router);
 
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
