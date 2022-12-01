@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/src"
+  to = "build/src/app.ts"
   status = 200  
