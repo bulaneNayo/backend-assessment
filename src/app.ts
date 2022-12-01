@@ -1,5 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+import userRoutes from "./routes/user";
+//import storyRoutes from "./routes/story";
 const bodyParser = require("body-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -13,7 +16,7 @@ const BASE_URL = "/api/v1";
 app.use(mongoSanitize());
 
 // PORT
-const listenPort =  5000;
+const listenPort = 5000;
 
 //Middleware
 app.use(bodyParser.json());
@@ -26,7 +29,7 @@ const database = (module.exports = () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
-  
+
   try {
     mongoose
       .connect(
@@ -47,9 +50,12 @@ const database = (module.exports = () => {
 });
 database();
 
+//user routes
+app.use(`${BASE_URL}/user`, userRoutes);
+app.use(`${BASE_URL}/user/login`, userRoutes);
+
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
 });
 
 module.exports = app;
-
