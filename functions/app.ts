@@ -25,7 +25,7 @@ const swaggerOptions = {
     },
   },
 
-  apis: ["src/docs/endpoints.ts"],
+  apis: ["functionsdocs/endpoints.ts"],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
