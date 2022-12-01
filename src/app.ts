@@ -88,7 +88,7 @@ app.use(`${BASE_URL}/story/update`, storyRoutes);
 app.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
 app.use(`${BASE_URL}/story/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
-app.use(`${BASE_URL}/story/single`, storyRoutes);
+app.use(`${BASE_URL}/story/single:id`, storyRoutes);
 
   
  app.listen(listenPort, () => {

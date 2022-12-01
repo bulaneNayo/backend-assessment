@@ -1,7 +1,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/user:
+ * /api/v1/user:
  *   post:
  *     tags:
  *       - Create account
@@ -71,7 +71,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story:
+ * /api/v1/story:
  *   post:
  *     tags:
  *       - Create a story
@@ -100,7 +100,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story/publish:
+ * /api/v1/story/publish:
  *   post:
  *     tags:
  *       - Publish a story
@@ -128,7 +128,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story/unpublish:
+ * /api/v1/story/unpublish:
  *   post:
  *     tags:
  *       - Unpublish a story
@@ -156,7 +156,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story/republish:
+ * /api/v1/story/republish:
  *   post:
  *     tags:
  *       - Republish a story
@@ -184,7 +184,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story/update/popularity:
+ * /api/v1/story/update/popularity:
  *   put:
  *     tags:
  *       - Update story popularity
@@ -244,7 +244,7 @@
 //User create account enpoint
 /**
  * @swagger
- * api/v1/story/update/popularity:
+ * /api/v1/story/update/popularity:
  *   put:
  *     tags:
  *       - Update story popularity
@@ -261,6 +261,37 @@
  *
  *           required:
  *             - storyId
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '404':
+ *         description: Story does not exist
+ */
+//user create account endpoint end
+
+//User create account enpoint
+/**
+ * @swagger
+ * /api/v1/story/update:
+ *   put:
+ *     tags:
+ *       - Update story
+ *     description: update a published story
+ *     parameters:
+ *       - name: reqBody
+ *         description: request body
+ *         in: body
+ *         schema:
+ *           type: object
+ *           properties:
+ *             storyId:
+ *               type: string
+ *             updateInfo:
+ *               type: object
+ *
+ *           required:
+ *             - storyId
+ *             - updateInfo
  *     responses:
  *       '200':
  *         description: A successful response
