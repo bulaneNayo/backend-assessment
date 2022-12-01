@@ -89,7 +89,8 @@ router.use(`${BASE_URL}/story/popular`, storyRoutes);
 router.use(`${BASE_URL}/story/single/popular`, storyRoutes);
 router.use(`${BASE_URL}/story/single`, storyRoutes);
 
-app.use("/.netlify/src/app",router);
+app.use("/",router);
+
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
 });
