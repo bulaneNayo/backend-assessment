@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/app.ts"
+  to = "/package.json"
   status = 200  
