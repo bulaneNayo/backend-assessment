@@ -38,6 +38,8 @@
     "mongoose": "^6.7.5",
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.6.0",
     "ts-node": "^10.8.2"
   }
 }

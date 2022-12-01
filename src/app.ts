@@ -7,6 +7,28 @@ const bodyParser = require("body-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 
 const app = express();
+
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "Minority Africa Advance backend  API",
+      description: "Advance API documentation",
+      contact: {
+        name: "Minority Africa",
+      },
+      servers: [process.env.DEPLOYED_APP],
+    },
+  },
+
+  apis: ["src/docs/endpoints.ts"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -54,7 +76,6 @@ database();
 app.use(`${BASE_URL}/user`, userRoutes);
 app.use(`${BASE_URL}/user/login`, userRoutes);
 
-
 //stories endpoints
 app.use(`${BASE_URL}/story`, storyRoutes);
 app.use(`${BASE_URL}/story/publish`, storyRoutes);
@@ -65,7 +86,6 @@ app.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
 app.use(`${BASE_URL}/story/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single`, storyRoutes);
-
 
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
