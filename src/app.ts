@@ -40,7 +40,7 @@ const BASE_URL = "/api/v1";
 app.use(mongoSanitize());
 
 // PORT
-const listenPort = 5000;
+const listenPort = process.env.PORT || 5000;
 
 //Middleware
 app.use(bodyParser.json());
@@ -90,9 +90,9 @@ app.use(`${BASE_URL}/story/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
 app.use(`${BASE_URL}/story/single`, storyRoutes);
 
+  
+ app.listen(listenPort, () => {
+   console.log(`Server running at http://localhost:${listenPort}`);
+ });
 
-//  app.listen(listenPort, () => {
-//    console.log(`Server running at http://localhost:${listenPort}`);
-//  });
-
-module.exports.handler = serverless(app);
+module.exports = app;
