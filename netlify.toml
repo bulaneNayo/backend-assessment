@@ -1,1 +1,4 @@
-  
+[[redirects]]
+  from = "/*"
+  to = "/src"
+  status = 200  

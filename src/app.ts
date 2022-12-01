@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 import userRoutes from "./routes/user";
-//import storyRoutes from "./routes/story";
+import storyRoutes from "./routes/story";
 const bodyParser = require("body-parser");
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -53,6 +53,19 @@ database();
 //user routes
 app.use(`${BASE_URL}/user`, userRoutes);
 app.use(`${BASE_URL}/user/login`, userRoutes);
+
+
+//stories endpoints
+app.use(`${BASE_URL}/story`, storyRoutes);
+app.use(`${BASE_URL}/story/publish`, storyRoutes);
+app.use(`${BASE_URL}/story/unpublish`, storyRoutes);
+app.use(`${BASE_URL}/story/republish`, storyRoutes);
+app.use(`${BASE_URL}/story/update`, storyRoutes);
+app.use(`${BASE_URL}/story/update/popularity`, storyRoutes);
+app.use(`${BASE_URL}/story/popular`, storyRoutes);
+app.use(`${BASE_URL}/story/single/popular`, storyRoutes);
+app.use(`${BASE_URL}/story/single`, storyRoutes);
+
 
 app.listen(listenPort, () => {
   console.log(`Server running at http://localhost:${listenPort}`);
