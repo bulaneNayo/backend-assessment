@@ -164,7 +164,7 @@ exports.findMostViewedStory = async () => {
  */
 exports.findPopularStories = async () => {
   try {
-    let storiesList = await Story.find({})
+    let storiesList = await Story.find({ isPublished: true })
 
       .sort({ popularity: -1 })
       .limit(10)
@@ -186,12 +186,10 @@ exports.updateStoryPopularity = async (storyId) => {
   try {
     let story = await Story.findOne({ _id: ObjectId(storyId) }).exec();
 
-    if (story == null) return Promise.reject("Story does not exist!");
-
     if (story.isPublished !== true)
-      return Promise.reject("Can not update unpublished story!");
-
-    story["popularity"] = story["popularity"] + 1;
+      return Promise.reject("Cannot update unpublished story!");
+    story.popularity = story.popularity + 1;
+    //story["popularity"] = story["popularity"] + 1;
     story = await story.save();
 
     return Promise.resolve(story);

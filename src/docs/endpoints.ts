@@ -38,7 +38,7 @@
 //user login endpoint
 /**
  * @swagger
- * /apiv1//user/login:
+ * /api/v1//user/login:
  *   post:
  *     tags:
  *       - User signin

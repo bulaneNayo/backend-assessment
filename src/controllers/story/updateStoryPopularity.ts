@@ -3,7 +3,7 @@ const storyUtils = require("../../utils/storyUtils");
 
 exports.updateUserStoryPopularity = async (req, res) => {
   try {
-    const { storyId } = req.query;
+    const { storyId } = req.body;
 
     let story = await storyUtils.updateStoryPopularity(storyId);
     return res.send(story);
